@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 Robot Gear System Optimizer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-robot"></i> Robot Gear System Optimizer</h1>
+                <p>Professional Engineering Analysis for Competition Teams</p>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <button class="nav-btn active" data-section="overview">
+                <i class="fas fa-chart-line"></i> Overview
+            </button>
+            <button class="nav-btn" data-section="combinations">
+                <i class="fas fa-cogs"></i> Combinations
+            </button>
+            <button class="nav-btn" data-section="optimization">
+                <i class="fas fa-tachometer-alt"></i> Optimization
+            </button>
+            <button class="nav-btn" data-section="statistics">
+                <i class="fas fa-chart-bar"></i> Statistics
+            </button>
+            <button class="nav-btn" data-section="calculator">
+                <i class="fas fa-calculator"></i> Calculator
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Overview Section -->
+            <section id="overview" class="section active">
+                <div class="hero-card">
+                    <h2>🚀 Advanced Gear Analysis System</h2>
+                    <p>Analyze all 147 possible gear combinations with professional engineering insights</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <i class="fas fa-cogs"></i>
+                            <h3>147</h3>
+                            <p>Total Combinations</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <h3>3</h3>
+                            <p>Input RPM Options</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-cog"></i>
+                            <h3>7</h3>
+                            <p>Gear Sizes</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>∞</h3>
+                            <p>Possibilities</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Speed Optimization</h3>
+                        <p>Find the fastest and slowest gear setups for your specific needs</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-balance-scale"></i>
+                        <h3>Balanced Configurations</h3>
+                        <p>Discover optimal setups closest to your target RPM</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-percentage"></i>
+                        <h3>Perfect Ratios</h3>
+                        <p>Identify whole number gear ratios for predictable performance</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Comprehensive Stats</h3>
+                        <p>Detailed analysis with engineering recommendations</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Combinations Section -->
+            <section id="combinations" class="section">
+                <h2><i class="fas fa-cogs"></i> Gear Combinations</h2>
+                
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>Input RPM:</label>
+                        <select id="rpmFilter">
+                            <option value="all">All RPMs</option>
+                            <option value="100">100 RPM</option>
+                            <option value="200">200 RPM</option>
+                            <option value="600">600 RPM</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Sort by:</label>
+                        <select id="sortFilter">
+                            <option value="output">Output RPM</option>
+                            <option value="ratio">Gear Ratio</option>
+                            <option value="input">Input RPM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="combinations-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Input RPM</th>
+                                <th>Driving Gear</th>
+                                <th>Driven Gear</th>
+                                <th>Ratio</th>
+                                <th>Output RPM</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody id="combinationsBody">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <button id="prevPage" class="btn-secondary">Previous</button>
+                    <span id="pageInfo">Page 1 of 15</span>
+                    <button id="nextPage" class="btn-secondary">Next</button>
+                </div>
+            </section>
+
+            <!-- Optimization Section -->
+            <section id="optimization" class="section">
+                <h2><i class="fas fa-tachometer-alt"></i> Optimization Analysis</h2>
+                
+                <div class="optimization-grid">
+                    <div class="opt-card fastest">
+                        <div class="opt-header">
+                            <i class="fas fa-bolt"></i>
+                            <h3>Fastest Setup</h3>
+                        </div>
+                        <div class="opt-content">
+                            <div class="opt-stat">
+                                <span class="label">Input:</span>
+                                <span class="value" id="fastestInput">600 RPM</span>
+                            </div>
+                            <div class="opt-stat">
+                                <span class="label">Gears:</span>
+                                <span class="value" id="fastestGears">80T → 12T</span>
+                            </div>
+                            <div class="opt-stat">
+                                <span class="label">Ratio:</span>
+                                <span class="value" id="fastestRatio">0.15:1</span>
+                            </div>
+                            <div class="opt-stat">
+                                <span class="label">Output:</span>
+                                <span class="value" id="fastestOutput">4000.0 RPM</span>
+                            </div>
+                        </div>
+                        <div class="opt-footer">
+                            <i class="fas fa-flag-checkered"></i> Best for: Speed challenges, racing
+                        </div>
+                    </div>
+
+                    <div class="opt-card slowest">
+                        <div class="opt-header">
+                            <i class="fas fa-snail"></i>
+                            <h3>Slowest Setup</h3>
+                        </div>
+                        <div class="opt-content">
+                            <div class="opt-stat">
+                                <span class="label">Input:</span>
+                                <span class="value" id="slowestInput">100 RPM</span>
+                            </div>
+                            <div class="opt-stat">
+                                <span class="label">Gears:</span>
+                                <span class="value" id="slowestGears">12T → 80T</span>
+                            </div>
+                            <div class="opt-stat">
+                                <span class="label">Ratio:</span>
+                                <span class="value" id="slowestRatio">6.67:1</span>
+                            </div>
+                            <div class="opt-stat">
+                                <span class="label">Output:</span>
+                                <span class="value" id="slowestOutput">15.0 RPM</span>
+                            </div>
+                        </div>
+                        <div class="opt-footer">
+                            <i class="fas fa-dumbbell"></i> Best for: Heavy lifting, climbing
+                        </div>
+                    </div>
+
+                    <div class="opt-card balanced">
+                        <div class="opt-header">
+                            <i class="fas fa-balance-scale"></i>
+                            <h3>Balanced Setup</h3>
+                        </div>
+                        <div class="opt-content">
+                            <div class="opt-stat">
+                                <span class="label">Target:</span>
+                                <span class="value">300 RPM</span>
+                            </div>
+                            <div class="opt-stat">
+                                <span class="label">Gears:</span>
+                                <span class="value" id="balancedGears">24T → 48T</span>
+                            </div>
+                            <div class="opt-stat">
+                                <span class="label">Ratio:</span>
+                                <span class="value" id="balancedRatio">2.00:1</span>
+                            </div>
+                            <div class="opt-stat">
+                                <span class="label">Output:</span>
+                                <span class="value" id="balancedOutput">300.0 RPM</span>
+                            </div>
+                        </div>
+                        <div class="opt-footer">
+                            <i class="fas fa-star"></i> Best for: All-around performance
+                        </div>
+                    </div>
+                </div>
+
+                <div class="perfect-ratios">
+                    <h3><i class="fas fa-percentage"></i> Perfect Ratio Analysis</h3>
+                    <div class="perfect-stats">
+                        <div class="perfect-stat">
+                            <span class="number" id="perfectCount">42</span>
+                            <span class="label">Perfect Ratios</span>
+                        </div>
+                        <div class="perfect-stat">
+                            <span class="number" id="perfectPercent">28.6%</span>
+                            <span class="label">of Total</span>
+                        </div>
+                    </div>
+                    <div id="perfectRatiosList" class="perfect-list">
+                        <!-- Perfect ratios will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section id="statistics" class="section">
+                <h2><i class="fas fa-chart-bar"></i> Comprehensive Statistics</h2>
+                
+                <div class="stats-container">
+                    <div class="chart-container">
+                        <h3>Speed Distribution</h3>
+                        <div class="chart" id="speedChart">
+                            <div class="chart-bar high-speed" style="width: 30%">
+                                <span>High Speed (500+ RPM)</span>
+                                <span class="count">44</span>
+                            </div>
+                            <div class="chart-bar medium-speed" style="width: 50%">
+                                <span>Medium Speed (100-500 RPM)</span>
+                                <span class="count">73</span>
+                            </div>
+                            <div class="chart-bar low-speed" style="width: 20%">
+                                <span>Low Speed (<100 RPM)</span>
+                                <span class="count">30</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stats-grid-detailed">
+                        <div class="stat-detail">
+                            <h4>Speed Range</h4>
+                            <p class="stat-value" id="speedRange">3985.0 RPM</p>
+                            <p class="stat-desc">Maximum speed variation</p>
+                        </div>
+                        <div class="stat-detail">
+                            <h4>Average Speed</h4>
+                            <p class="stat-value" id="avgSpeed">745.2 RPM</p>
+                            <p class="stat-desc">Mean output RPM</p>
+                        </div>
+                        <div class="stat-detail">
+                            <h4>Most Common Ratio</h4>
+                            <p class="stat-value" id="commonRatio">2.00:1</p>
+                            <p class="stat-desc">Perfect ratio frequency</p>
+                        </div>
+                        <div class="stat-detail">
+                            <h4>Efficiency Score</h4>
+                            <p class="stat-value" id="efficiencyScore">85%</p>
+                            <p class="stat-desc">Overall system efficiency</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recommendations">
+                    <h3><i class="fas fa-lightbulb"></i> Engineering Recommendations</h3>
+                    <div class="rec-list">
+                        <div class="rec-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Plenty of high-speed options for racing challenges</span>
+                        </div>
+                        <div class="rec-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Good torque options available for heavy-duty tasks</span>
+                        </div>
+                        <div class="rec-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>745.2 RPM average provides balanced performance</span>
+                        </div>
+                        <div class="rec-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>3985.0 RPM range offers maximum flexibility</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calculator Section -->
+            <section id="calculator" class="section">
+                <h2><i class="fas fa-calculator"></i> Gear Calculator</h2>
+                
+                <div class="calculator-container">
+                    <div class="calc-inputs">
+                        <div class="input-group">
+                            <label for="calcInputRPM">Input RPM:</label>
+                            <input type="number" id="calcInputRPM" value="200" min="1" max="1000">
+                        </div>
+                        <div class="input-group">
+                            <label for="calcDrivingGear">Driving Gear (teeth):</label>
+                            <select id="calcDrivingGear">
+                                <option value="12">12T</option>
+                                <option value="24">24T</option>
+                                <option value="36">36T</option>
+                                <option value="48">48T</option>
+                                <option value="60">60T</option>
+                                <option value="72">72T</option>
+                                <option value="80">80T</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="calcDrivenGear">Driven Gear (teeth):</label>
+                            <select id="calcDrivenGear">
+                                <option value="12">12T</option>
+                                <option value="24">24T</option>
+                                <option value="36">36T</option>
+                                <option value="48" selected>48T</option>
+                                <option value="60">60T</option>
+                                <option value="72">72T</option>
+                                <option value="80">80T</option>
+                            </select>
+                        </div>
+                        <button id="calculateBtn" class="btn-primary">
+                            <i class="fas fa-calculator"></i> Calculate
+                        </button>
+                    </div>
+
+                    <div class="calc-results">
+                        <div class="result-card">
+                            <h4>Gear Ratio</h4>
+                            <p class="result-value" id="calcRatio">2.00:1</p>
+                        </div>
+                        <div class="result-card">
+                            <h4>Output RPM</h4>
+                            <p class="result-value" id="calcOutput">100.0 RPM</p>
+                        </div>
+                        <div class="result-card">
+                            <h4>Speed Factor</h4>
+                            <p class="result-value" id="calcSpeedFactor">0.5x</p>
+                        </div>
+                        <div class="result-card">
+                            <h4>Torque Factor</h4>
+                            <p class="result-value" id="calcTorqueFactor">2.0x</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-info">
+                    <h3>How it works:</h3>
+                    <ul>
+                        <li><strong>Gear Ratio</strong> = Driven Gear ÷ Driving Gear</li>
+                        <li><strong>Output RPM</strong> = Input RPM ÷ Gear Ratio</li>
+                        <li><strong>Speed Factor</strong> = How much speed is reduced/increased</li>
+                        <li><strong>Torque Factor</strong> = How much torque is increased/reduced</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Robot Gear System Optimizer | Professional Engineering Analysis</p>
+            <p>Built for competition teams and robotics enthusiasts</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
